@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Learning Hub</title>
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --text-color: #333;
+        --light-bg: #f8f9fa;
+        --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f4f4f4;
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 1.5rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .hero {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 3rem 0;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .persona-indicator {
+        background-color: #e74c3c;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        display: inline-block;
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+
+      .section-title {
+        text-align: center;
+        margin: 2rem 0;
+        font-size: 2rem;
+        color: var(--secondary-color);
+      }
+
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .post-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s;
+      }
+
+      .post-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .post-img {
+        height: 180px;
+        background-color: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .post-content {
+        padding: 1.5rem;
+      }
+
+      .post-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+      }
+
+      .post-excerpt {
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .read-more {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .read-more:hover {
+        background-color: #2980b9;
+      }
+
+      .fields-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .field-card {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: var(--card-shadow);
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .field-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .field-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+      }
+
+      .field-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+      }
+
+      .field-description {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      footer {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 2rem 0;
+        margin-top: 3rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .footer-section p {
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-info {
+        list-style: none;
+      }
+
+      .contact-info li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-btn {
+          display: block;
+          font-size: 1.5rem;
+          color: white;
+          cursor: pointer;
+        }
+
+        .posts-grid,
+        .fields-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Hide all persona-specific content by default */
+      .content-beginner,
+      .content-working,
+      .content-retired,
+      .content-freelancer {
+        display: none;
+      }
+
+      /* Active persona will be shown through JavaScript */
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">Tech Learning Hub</div>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#top-posts">Top Posts</a></li>
+            <li><a href="#recent-posts">Recent Posts</a></li>
+            <li><a href="#fields">Fields</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div style="text-align: center; margin: 20px 0px">
+      <p style="margin-bottom: 10px">
+        Enter your details to personalize experience:
+      </p>
+      <form id="personaForm" style="display: inline-block; text-align: left">
+        <label>Age: <input type="number" id="age" required /></label
+        ><br /><br />
+        <label
+          >Education:
+          <select id="education" required>
+            <option value="">--Select--</option>
+            <option value="School">School</option>
+            <option value="Highschool">High School</option>
+            <option value="Bachelor">Bachelor</option>
+            <option value="Master">Master</option>
+            <option value="PhD">PhD</option>
+          </select> </label
+        ><br /><br />
+        <label
+          >Employment Status:
+          <select id="occupation" required>
+            <option value="">--Select--</option>
+            <option value="Student">Student</option>
+            <option value="Employed">Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Retired">Retired</option>
+            <option value="Freelancer">Freelancer</option>
+          </select> </label
+        ><br /><br />
+        <label
+          >Experience: <input type="number" id="experience" required /></label
+        ><br /><br />
+        <button type="submit" id="predict-btn" style="padding: 5px 15px">
+          Predict Persona
+        </button>
+        <p id="persona" style="margin-top: 15px; font-weight: bold"></p>
+      </form>
+    </div>
+
+    <section class="container" id="top-posts">
+      <h2 class="section-title">Top Posts For You</h2>
+
+      <!-- Beginner Content -->
+      <div class="posts-grid content-beginner">
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://media.istockphoto.com/photos/html-code-html5-computer-language-programming-javascript-code-text-picture-id1156837655?k=6&m=1156837655&s=612x612&w=0&h=v9mjWYdKZCe7REWB4O1AY4fkwNeqs2s5UfL6p4-C4fA="
+              alt="HTML Basics"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Getting Started with HTML</h3>
+            <p class="post-excerpt">
+              Learn the fundamentals of HTML to start building your first
+              webpage.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://th.bing.com/th/id/OIP.OmLw0LeZF_LJZC-Wtq1wFwHaDt?w=1200&h=600&rs=1&pid=ImgDetMain"
+              alt="CSS Basics"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">CSS Fundamentals</h3>
+            <p class="post-excerpt">
+              Style your websites with the basics of Cascading Style Sheets.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://i.ytimg.com/vi/p_6ER1R1sWw/maxresdefault.jpg"
+              alt="Programming Logic"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Programming Logic for Beginners</h3>
+            <p class="post-excerpt">
+              Understanding the core concepts of programming logic and
+              problem-solving.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Working Professional Content -->
+      <div class="posts-grid content-working">
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://salesqueen.org/wp-content/uploads/2022/05/React-JS-Development.jpeg"
+              alt="Advanced React"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Advanced React Patterns</h3>
+            <p class="post-excerpt">
+              Learn advanced component patterns to build scalable React
+              applications.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://newconfig.com/wp-content/uploads/2019/11/SQL-Pic-from-ShutterStock-Bought-09.19.2019.jpg"
+              alt="Database Optimization"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">SQL Query Optimization Techniques</h3>
+            <p class="post-excerpt">
+              Improve your database performance with these advanced SQL
+              optimization techniques.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://thumbs.dreamstime.com/z/cloud-computing-code-computer-screen-developing-ecommerce-solutions-313674567.jpg?w=992"
+              alt="Cloud Architecture"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Modern Cloud Architecture Patterns</h3>
+            <p class="post-excerpt">
+              Design scalable and resilient systems using modern cloud
+              architecture.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Retired Content -->
+      <div class="posts-grid content-retired">
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://th.bing.com/th/id/OIP.jJCvDDI5bMLKpQLVr8ANuQHaDt?w=1024&h=512&rs=1&pid=ImgDetMain"
+              alt="Technology History"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Evolution of Computing</h3>
+            <p class="post-excerpt">
+              From punch cards to quantum computing: A journey through
+              technological history.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://th.bing.com/th/id/OIP._nbVLQA11fjTdPgIHiaGQwHaE8?rs=1&pid=ImgDetMain"
+              alt="Tech for Seniors"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Technology Tools for Golden Years</h3>
+            <p class="post-excerpt">
+              Discover how technology can enhance your retirement lifestyle.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://whhlaw.com/wp-content/uploads/2022/11/Digital-Legacy.jpg"
+              alt="Digital Legacy"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Managing Your Digital Legacy</h3>
+            <p class="post-excerpt">
+              Learn how to organize and pass on your digital assets and
+              accounts.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Freelancer Content -->
+      <div class="posts-grid content-freelancer">
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://super-monitoring.com/blog/wp-content/uploads/2019/07/freelancers.jpg"
+              alt="Freelance Business"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Building Your Freelance Business</h3>
+            <p class="post-excerpt">
+              Essential strategies for starting and growing your freelance tech
+              career.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://th.bing.com/th/id/OIP.5hFpu7a8G3419Gx3chkRSQHaEO?rs=1&pid=ImgDetMain"
+              alt="Client Management"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Client Management Best Practices</h3>
+            <p class="post-excerpt">
+              Learn how to manage client relationships and expectations
+              effectively.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://bowwe.com/upload/domain/37991/images/024_Portfolio/New-Cover-How-Create-Business-Portfolio.webp"
+              alt="Portfolio Building"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Creating a Standout Portfolio</h3>
+            <p class="post-excerpt">
+              Showcase your work effectively to attract high-quality clients.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="recent-posts">
+      <h2 class="section-title">Your Recent Activity</h2>
+      <div class="posts-grid">
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://bowwe.com/upload/domain/37991/images/024_Portfolio/New-Cover-How-Create-Business-Portfolio.webp"
+              alt="Liked Post"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Post You Liked</h3>
+            <p class="post-excerpt">
+              This is a post you recently liked. Content adapts based on your
+              preferences.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-img">
+            <img
+              src="https://whhlaw.com/wp-content/uploads/2022/11/Digital-Legacy.jpg"
+              alt="Liked Post"
+            />
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">Another Post You Engaged With</h3>
+            <p class="post-excerpt">
+              Another post you recently engaged with. Your activity shapes your
+              recommendations.
+            </p>
+            <a href="#" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="fields">
+      <h2 class="section-title">Learning Fields</h2>
+
+      <!-- Beginner Fields -->
+      <div class="fields-container content-beginner">
+        <div class="field-card">
+          <div class="field-icon">📱</div>
+          <h3 class="field-title">Learning Front-end</h3>
+          <p class="field-description">
+            HTML, CSS, JavaScript basics for beginners
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">⚙️</div>
+          <h3 class="field-title">Learning Back-end</h3>
+          <p class="field-description">Server-side programming fundamentals</p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">🎨</div>
+          <h3 class="field-title">UI/UX Design</h3>
+          <p class="field-description">
+            Basic design principles and user experience
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">💻</div>
+          <h3 class="field-title">Programming Basics</h3>
+          <p class="field-description">
+            Core concepts of programming and logic
+          </p>
+        </div>
+      </div>
+
+      <!-- Working Professional Fields -->
+      <div class="fields-container content-working">
+        <div class="field-card">
+          <div class="field-icon">🔗</div>
+          <h3 class="field-title">Blockchain Development</h3>
+          <p class="field-description">
+            Smart contracts, Web3, and decentralized applications
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">🌐</div>
+          <h3 class="field-title">Advanced Web Development</h3>
+          <p class="field-description">
+            Modern frameworks and architecture patterns
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">🗄️</div>
+          <h3 class="field-title">Database Management</h3>
+          <p class="field-description">
+            Advanced SQL, NoSQL, and database optimization
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">☁️</div>
+          <h3 class="field-title">Cloud Computing</h3>
+          <p class="field-description">AWS, Azure, and cloud architecture</p>
+        </div>
+      </div>
+
+      <!-- Retired Fields - This will show all options -->
+      <div class="fields-container content-retired">
+        <div class="field-card">
+          <div class="field-icon">📱</div>
+          <h3 class="field-title">Learning Front-end</h3>
+          <p class="field-description">
+            HTML, CSS, JavaScript basics for beginners
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">⚙️</div>
+          <h3 class="field-title">Learning Back-end</h3>
+          <p class="field-description">Server-side programming fundamentals</p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">🔗</div>
+          <h3 class="field-title">Blockchain Development</h3>
+          <p class="field-description">
+            Smart contracts, Web3, and decentralized applications
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">🌐</div>
+          <h3 class="field-title">Advanced Web Development</h3>
+          <p class="field-description">
+            Modern frameworks and architecture patterns
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">🎨</div>
+          <h3 class="field-title">UI/UX Design</h3>
+          <p class="field-description">Design principles and user experience</p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">🤖</div>
+          <h3 class="field-title">AI & Machine Learning</h3>
+          <p class="field-description">
+            Introduction to artificial intelligence concepts
+          </p>
+        </div>
+      </div>
+
+      <!-- Freelancer Fields (same as beginner) -->
+      <div class="fields-container content-freelancer">
+        <div class="field-card">
+          <div class="field-icon">📱</div>
+          <h3 class="field-title">Learning Front-end</h3>
+          <p class="field-description">
+            HTML, CSS, JavaScript basics for beginners
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">⚙️</div>
+          <h3 class="field-title">Learning Back-end</h3>
+          <p class="field-description">Server-side programming fundamentals</p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">🎨</div>
+          <h3 class="field-title">UI/UX Design</h3>
+          <p class="field-description">
+            Basic design principles and user experience
+          </p>
+        </div>
+
+        <div class="field-card">
+          <div class="field-icon">💼</div>
+          <h3 class="field-title">Freelance Business</h3>
+          <p class="field-description">
+            Managing clients and building your business
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <h2 class="section-title">About Us</h2>
+      <div
+        style="
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+          background-color: white;
+          border-radius: 8px;
+          box-shadow: var(--card-shadow);
+        "
+      >
+        <p style="margin-bottom: 1rem">
+          This platform was developed by CSE boys from UCEK of batch 5. We are
+          passionate about creating personalized learning experiences that adapt
+          to the unique needs of each user.
+        </p>
+        <p>
+          Our AI-powered system generates content tailored to your experience
+          level and interests, whether you're a beginner, working professional,
+          freelancer, or retired tech enthusiast.
+        </p>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <div
+        style="
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+          background-color: white;
+          border-radius: 8px;
+          box-shadow: var(--card-shadow);
+        "
+      >
+        <p style="margin-bottom: 1rem">
+          <strong>Address:</strong> Faizul From KPM
+        </p>
+        <p style="margin-bottom: 1rem">
+          <strong>Phone:</strong> Faizul-the Original Gangster of CSE, +91 86108
+          67541
+        </p>
+        <p><strong>Email:</strong> contact@techlearninghub.com</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Tech Learning Hub</h3>
+            <p>Your personalized learning platform</p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="contact-info">
+              <li>
+                <a href="#home" style="color: white; text-decoration: none"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#top-posts" style="color: white; text-decoration: none"
+                  >Top Posts</a
+                >
+              </li>
+              <li>
+                <a href="#fields" style="color: white; text-decoration: none"
+                  >Fields</a
+                >
+              </li>
+              <li>
+                <a href="#about" style="color: white; text-decoration: none"
+                  >About</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Contact Info</h3>
+            <ul class="contact-info">
+              <li>Faizul Home</li>
+              <li>+91 86108 67541</li>
+              <li>contact@techlearninghub.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Tech Learning Hub | Developed by CSE Boys from UCEK
+            Batch 5
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document
+        .getElementById("predict-btn")
+        .addEventListener("click", async function (event) {
+          event.preventDefault(); // Corrected to prevent form refresh
+
+          const age = document.getElementById("age").value;
+          const education = document.getElementById("education").value;
+          const occupation = document.getElementById("occupation").value;
+          const experience = document.getElementById("experience").value;
+          const requestData = {
+            age: parseInt(age),
+            education: education,
+            occupation: occupation,
+            experience: parseInt(experience),
+          };
+
+          try {
+            const response = await fetch("https://ai-persona-webapp.onrender.com/predict", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(requestData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              // Show predicted persona text
+              const personaElement = document.getElementById("persona");
+              if (personaElement) {
+                personaElement.textContent = `Predicted Persona: ${data.persona}`;
+              }
+
+              // Hide all content sections
+              document.querySelectorAll(".content").forEach(function (section) {
+                section.style.display = "none";
+              });
+
+              // Show the section matching the predicted persona
+              const personaKey = data.persona.toLowerCase();
+              const predictedSection = document.querySelector(
+                `.content-${personaKey}`
+              );
+
+              if (predictedSection) {
+                predictedSection.style.display = "block";
+              }
+            } else {
+              document.getElementById(
+                "persona"
+              ).textContent = `Error: ${data.error}`;
+            }
+          } catch (error) {
+            document.getElementById(
+              "persona"
+            ).textContent = `Error: ${error.message}`;
+          }
+        });
+    </script>
+  </body>
+</html>
